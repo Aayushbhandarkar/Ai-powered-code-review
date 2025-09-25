@@ -8,17 +8,16 @@ function Login({ setAuth, setIsRegister }) {
   const [loading, setLoading] = useState(false);
   const [notification, setNotification] = useState(null);
 
-  // ✅ Typewriter effect states
+  // Typewriter effect
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
 
-  // ✅ Determine API URL dynamically
-  const API_URL = import.meta.env.VITE_API_URL || "https://ai-powered-code-review-backend.onrender.com/auth/login";
+ 
+  const API_URL = "https://ai-powered-code-review-backend.onrender.com";
 
   useEffect(() => {
     const fullTitle = "CodeReviewer";
     const fullSubtitle = "BUG FINDER";
-
     let titleIndex = 0;
     let subtitleIndex = 0;
 
@@ -27,7 +26,6 @@ function Login({ setAuth, setIsRegister }) {
       titleIndex++;
       if (titleIndex === fullTitle.length) {
         clearInterval(titleInterval);
-
         const subtitleInterval = setInterval(() => {
           setSubtitle(fullSubtitle.slice(0, subtitleIndex + 1));
           subtitleIndex++;
@@ -38,9 +36,7 @@ function Login({ setAuth, setIsRegister }) {
       }
     }, 120);
 
-    return () => {
-      clearInterval(titleInterval);
-    };
+    return () => clearInterval(titleInterval);
   }, []);
 
   async function handleLogin(e) {
@@ -50,9 +46,9 @@ function Login({ setAuth, setIsRegister }) {
 
     try {
       const res = await axios.post(
-        `${API_URL}/auth/login`,
+        `${API_URL}/auth/login`, // ✅ Correct endpoint
         { email, password },
-        { withCredentials: true } // ✅ important if backend uses cookies
+        { withCredentials: true }
       );
 
       localStorage.setItem("token", res.data.token);
@@ -72,7 +68,6 @@ function Login({ setAuth, setIsRegister }) {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0b0c10] via-[#0d1117] to-[#1a1d29] relative px-4 sm:px-6">
-      {/* Notification */}
       {notification && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -82,21 +77,18 @@ function Login({ setAuth, setIsRegister }) {
             notification.type === "success" ? "bg-green-600" : "bg-red-600"
           }`}
         >
-          <span className="mr-2">
-            {notification.type === "success" ? "✓" : "✗"}
-          </span>
+          <span className="mr-2">{notification.type === "success" ? "✓" : "✗"}</span>
           {notification.message}
         </motion.div>
       )}
 
-      {/* Main Container */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 40 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="flex w-full max-w-7xl min-h-[600px] md:min-h-[720px] rounded-2xl overflow-hidden shadow-2xl border border-gray-800/50 backdrop-blur-md bg-[#10131a] flex-col md:flex-row"
       >
-        {/* Left Side (branding with typing effect) */}
+        {/* Left side: branding */}
         <div className="hidden md:flex w-1/2 bg-gradient-to-br from-blue-900/40 to-indigo-900/40 flex-col items-center justify-center p-10 lg:p-16 text-center relative">
           <div className="absolute inset-0 bg-black/50"></div>
           <div className="relative z-10">
@@ -126,7 +118,7 @@ function Login({ setAuth, setIsRegister }) {
           </div>
         </div>
 
-        {/* Right Side (form) */}
+        {/* Right side: form */}
         <div className="w-full md:w-1/2 bg-[#0f1117] p-6 sm:p-10 lg:p-16 flex flex-col justify-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
             Welcome Back
@@ -136,13 +128,7 @@ function Login({ setAuth, setIsRegister }) {
           </p>
 
           <form onSubmit={handleLogin} className="space-y-6 sm:space-y-8">
-            {/* Email Field */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.1 }}
-              className="relative"
-            >
+            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }} className="relative">
               <input
                 type="email"
                 placeholder="Email Address"
@@ -153,13 +139,7 @@ function Login({ setAuth, setIsRegister }) {
               />
             </motion.div>
 
-            {/* Password Field */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="relative"
-            >
+            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="relative">
               <input
                 type="password"
                 placeholder="Password"
@@ -170,14 +150,11 @@ function Login({ setAuth, setIsRegister }) {
               />
             </motion.div>
 
-            {/* Button */}
             <motion.button
               whileTap={{ scale: 0.95 }}
               type="submit"
               className={`w-full py-4 sm:py-5 px-6 rounded-lg text-white font-semibold shadow-lg text-base sm:text-lg ${
-                loading
-                  ? "bg-gray-700 cursor-not-allowed"
-                  : "bg-gradient-to-r from-[#1e293b] to-[#0f172a] hover:from-[#334155] hover:to-[#1e293b]"
+                loading ? "bg-gray-700 cursor-not-allowed" : "bg-gradient-to-r from-[#1e293b] to-[#0f172a] hover:from-[#334155] hover:to-[#1e293b]"
               } transition-all duration-300`}
               disabled={loading}
             >
@@ -188,10 +165,7 @@ function Login({ setAuth, setIsRegister }) {
           <div className="mt-8 sm:mt-10 text-center">
             <p className="text-gray-400 text-sm sm:text-lg">
               Don’t have an account?{" "}
-              <button
-                onClick={() => setIsRegister(true)}
-                className="text-blue-400 hover:text-blue-300 font-semibold underline"
-              >
+              <button onClick={() => setIsRegister(true)} className="text-blue-400 hover:text-blue-300 font-semibold underline">
                 Register
               </button>
             </p>
