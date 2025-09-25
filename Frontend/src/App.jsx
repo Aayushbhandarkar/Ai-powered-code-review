@@ -55,8 +55,7 @@ function App() {
 
   function handleLogout() {
     localStorage.removeItem("token");
-    setPage("login");
-    window.location.href = "/login";
+    setPage("login"); // This is enough to redirect to login page
   }
 
   // --- Render pages ---
