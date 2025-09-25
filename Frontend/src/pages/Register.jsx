@@ -11,7 +11,7 @@ function Register({ setAuth, setIsRegister }) {
   const [notification, setNotification] = useState(null);
 
   // ✅ Dynamic API URL for local & deployed
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+  const API_URL = import.meta.env.VITE_API_URL || "https://ai-powered-code-review-backend.onrender.com/auth/login";
 
   async function handleRegister(e) {
     e.preventDefault();
