@@ -10,8 +10,10 @@ function Register({ setAuth, setIsRegister }) {
   const [loading, setLoading] = useState(false);
   const [notification, setNotification] = useState(null);
 
-  // ✅ Dynamic API URL for local & deployed
-  const API_URL = import.meta.env.VITE_API_URL || "https://ai-powered-code-review-backend.onrender.com/auth/login";
+  // ✅ Base API URL (no /auth/login here!)
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "https://ai-powered-code-review-backend.onrender.com";
 
   async function handleRegister(e) {
     e.preventDefault();
@@ -19,15 +21,19 @@ function Register({ setAuth, setIsRegister }) {
     setNotification(null);
 
     try {
+      // Register user
       await axios.post(`${API_URL}/auth/register`, {
         name,
         email,
         password,
       });
+
+      // Auto login after register
       const loginRes = await axios.post(`${API_URL}/auth/login`, {
         email,
         password,
       });
+
       localStorage.setItem("token", loginRes.data.token);
       setAuth(true);
       setNotification({
