@@ -3,20 +3,36 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Landing from "./pages/Landing";  // 👈 NEW
+import Landing from "./pages/Landing";
 import "./index.css";
 
 function Main() {
   const [auth, setAuth] = useState(!!localStorage.getItem("token"));
   const [isRegister, setIsRegister] = useState(false);
-  const [page, setPage] = useState("landing"); // 👈 control which screen
+  const [page, setPage] = useState("landing");
+
+  // Handle authentication state change
+  const handleAuth = (status) => {
+    setAuth(status);
+    if (status) {
+      setPage("review");
+    } else {
+      setPage("login");
+    }
+  };
+
+  // Handle register toggle
+  const handleSetIsRegister = (flag) => {
+    setIsRegister(flag);
+    setPage(flag ? "register" : "login");
+  };
 
   // ✅ Authenticated → Show Code Reviewer
-  if (auth) {
-    return <App />;
+  if (auth && page === "review") {
+    return <App setAuth={handleAuth} />;
   }
 
-  // ✅ Not logged in
+  // ✅ Not logged in - Show Landing page
   if (page === "landing") {
     return (
       <Landing
@@ -36,9 +52,9 @@ function Main() {
 
   // ✅ Show Login/Register
   return isRegister ? (
-    <Register setAuth={setAuth} setIsRegister={setIsRegister} />
+    <Register setAuth={handleAuth} setIsRegister={handleSetIsRegister} />
   ) : (
-    <Login setAuth={setAuth} setIsRegister={setIsRegister} />
+    <Login setAuth={handleAuth} setIsRegister={handleSetIsRegister} />
   );
 }
 
