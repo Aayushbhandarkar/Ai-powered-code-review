@@ -38,9 +38,7 @@ An advanced **MERN stack** project powered by **Google Gemini API** for intellig
 
 
 ### 🤖 Code Review Page
-
-![WhatsApp Image 2025-09-26 at 06 36 01_704eeb62](https://github.com/user-attachments/assets/ae309bba-0d5e-4279-9237-c1423aaf96a3)
-
+<img width="1919" height="1043" alt="Screenshot 2025-09-26 064132" src="https://github.com/user-attachments/assets/06093186-43d5-49c0-959e-77afa7908e95" />
 
 ---
 
