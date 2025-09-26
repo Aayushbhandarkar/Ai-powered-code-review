@@ -104,6 +104,7 @@ An advanced **MERN stack** project powered by **Google Gemini API** for intellig
 ## 👨‍💻 Author
 
 **Ayush Bhandarkar**
+
 www.linkedin.com/in/ayush-bhandarkar-555730286 • https://github.com/Aayushbhandarkar
 
 ---
