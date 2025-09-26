@@ -61,7 +61,7 @@ An advanced **MERN stack** project powered by **Google Gemini API** for intellig
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/ai-code-reviewer.git
+   https://github.com/Aayushbhandarkar/Ai-powered-code-review.git
    cd ai-code-reviewer
    ```
 
@@ -95,9 +95,6 @@ An advanced **MERN stack** project powered by **Google Gemini API** for intellig
 
 ---
 
-## 📌 Hackathon Fit
-
-This project was built for hackathons like **CodeKong 2025**, where participants are expected to submit innovative full-stack web apps with real-world impact.
 
 * ✅ Solves a real developer pain-point (code review & bug detection)
 * ✅ Uses **AI & Web** category
@@ -109,6 +106,6 @@ This project was built for hackathons like **CodeKong 2025**, where participants
 ## 👨‍💻 Author
 
 **Ayush Bhandarkar**
-[LinkedIn](https://www.linkedin.com/) • [GitHub](https://github.com/your-username)
+www.linkedin.com/in/ayush-bhandarkar-555730286 • https://github.com/Aayushbhandarkar
 
 ---
