@@ -31,10 +31,11 @@ An advanced **MERN stack** project powered by **Google Gemini API** for intellig
 
 
 ### 🔐 Authentication Pages
+<img width="1914" height="1045" alt="Screenshot 2025-09-26 064449" src="https://github.com/user-attachments/assets/eb70180a-d9af-40d3-95bc-f8793a4d5345" />
 
-![WhatsApp Image 2025-09-26 at 06 34 24_6b679217](https://github.com/user-attachments/assets/b7b29151-ed01-471f-bc83-7fa76651aa17)
+<img width="1919" height="1046" alt="Screenshot 2025-09-26 064506" src="https://github.com/user-attachments/assets/c99094d0-82e8-4ea0-bb5a-38609b2ae221" />
 
-![WhatsApp Image 2025-09-26 at 06 35 22_52bea8ba](https://github.com/user-attachments/assets/37ea6a88-064e-47fb-be1d-3e64dcc52964)
+
 
 
 ### 🤖 Code Review Page
